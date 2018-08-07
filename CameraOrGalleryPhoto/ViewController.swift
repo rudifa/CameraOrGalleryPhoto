@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var imagePicker = UIImagePickerController()
+    var imagePicker: SimpleImagePicker!
 
     @IBOutlet weak var imageView: UIImageView!
     
@@ -20,61 +20,37 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker = SimpleImagePicker(owner: self, delegate: self)
     }
 
 }
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    // see https://stackoverflow.com/questions/26502931/how-to-get-the-edited-image-from-uiimagepickercontroller-in-swift
+extension ViewController: SimpleImagePickerDelegate {
 
     func selectImageSource()
     {
-        let alert = UIAlertController(title: "Select Image Source", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-            self.openCamera()
-        }))
+        if imagePicker.hasCamera {
+            let alert = UIAlertController(title: "Select Image Source", message: nil, preferredStyle: .actionSheet)
 
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-            self.openGallery()
-        }))
+            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+                self.imagePicker?.openCamera()
+            }))
 
-        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+                self.imagePicker?.openGallery()
+            }))
 
-        imagePicker.delegate = self
-        self.present(alert, animated: true, completion: nil)
-    }
+            alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
 
-    func openCamera()
-    {
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
-        {
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-        else
-        {
-            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        } else {
+            self.imagePicker?.openGallery()
         }
     }
 
-    func openGallery()
-    {
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        imagePicker.allowsEditing = true
-        self.present(imagePicker, animated: true, completion: nil)
+    func selected(image: UIImage) {
+        imageView.image = image
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        picker.dismiss(animated: true, completion: nil)
-        //You will get cropped image here..
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage
-        {
-            self.imageView.image = image
-        }
-    }
 }
 

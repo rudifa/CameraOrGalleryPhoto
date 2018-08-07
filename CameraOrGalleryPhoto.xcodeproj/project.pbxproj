@@ -12,6 +12,7 @@
 		9D2D50D02118A4480009CB9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D2D50CE2118A4480009CB9F /* Main.storyboard */; };
 		9D2D50D22118A4490009CB9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D2D50D12118A4490009CB9F /* Assets.xcassets */; };
 		9D2D50D52118A4490009CB9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D2D50D32118A4490009CB9F /* LaunchScreen.storyboard */; };
+		9D5A4A6F2119AA880047656C /* SimpleImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A4A6E2119AA880047656C /* SimpleImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		9D2D50D12118A4490009CB9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D2D50D42118A4490009CB9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D2D50D62118A4490009CB9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D5A4A6E2119AA880047656C /* SimpleImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				9D2D50CA2118A4480009CB9F /* AppDelegate.swift */,
 				9D2D50CC2118A4480009CB9F /* ViewController.swift */,
+				9D5A4A6E2119AA880047656C /* SimpleImagePicker.swift */,
 				9D2D50CE2118A4480009CB9F /* Main.storyboard */,
 				9D2D50D12118A4490009CB9F /* Assets.xcassets */,
 				9D2D50D32118A4490009CB9F /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				9D2D50CD2118A4480009CB9F /* ViewController.swift in Sources */,
 				9D2D50CB2118A4480009CB9F /* AppDelegate.swift in Sources */,
+				9D5A4A6F2119AA880047656C /* SimpleImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
